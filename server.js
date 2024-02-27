@@ -144,7 +144,7 @@ app.get('/logout', (req, res) => {
 
 
 app.post('/adminlogin', async(req, res) => {
-     await setupDatabase();
+    
     const { email, password } = req.body;
     console.log(email,password)
     // Check if email and password are provided
