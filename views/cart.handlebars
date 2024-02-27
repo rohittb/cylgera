@@ -1,0 +1,74 @@
+<section id="page-header" class="about-header">
+        <h2>My Cart</h2>
+        <p>Ready for Payment? Let's move!</p>
+    </section>
+
+    <section id="cart" class="section-p1">
+        <table width="100%">
+            <thead>
+                <tr>
+                    <td>Image</td>
+                    <td>Product</td>
+                    <td>Price</td>
+                    <td>Quantity</td>
+                    <td>Subtotal</td>
+                    <td>Remove</td>
+                </tr>
+            </thead>
+            <tbody id="cart-items"> 
+                <tr>
+                    <td><img src="img/gym.jpg" alt=""></td>
+                    <td>6 Months Gym Membership</td>
+                    <td>$100</td>
+                    <td><input type="number" value="1"></td>
+                    <td>$113</td>
+                    <td><a href=""><i class="fa fa-times-circle"></i></a></td>
+                </tr>
+                <tr>
+                    <td><img src="img/meal.jpg" alt=""></td>
+                    <td>30 Freash Meal Kits</td>
+                    <td>$100</td>
+                    <td><input type="number" value="1"></td>
+                    <td>$113</td>
+                    <td><a href=""><i class="fa fa-times-circle"></i></a></td>
+                </tr>
+                <tr>
+                    <td><img src="img/Pro6.jpg" alt=""></td>
+                    <td>Mindfulness and Meditation Classes</td>
+                    <td>$100</td>
+                    <td><input type="number" value="1"></td>
+                    <td>$113</td>
+                    <td><a href=""><i class="fa fa-times-circle"></i></a></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="cart-add" class="section-p1">
+        <div id="coupon">
+            <h3>Apply Coupon</h3>
+            <div>
+                <input type="text" placeholder="Enter Your Coupon">
+                <button class="normal">Apply</button>
+            </div>
+        </div>
+
+        <div id="subtotal">
+            <h3>Cart Totals</h3>
+            <table>
+                <tr>
+                    <td>Cart Subtotal</td>
+                    <td id="cart-subtotal">$0</td>
+                </tr>
+                <tr>
+                    <td>Shipping</td>
+                    <td id="shipping-cost">Free</td>
+                </tr>
+                <tr>
+                    <td><strong>Total</strong></td>
+                    <td id="total-cost"><strong>$0</strong></td>
+                </tr>
+            </table>
+            <button class="normal" id="checkout-button">Proceed to checkout</button>
+        </div>
+    </section>

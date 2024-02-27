@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Market Place</title>
+    <link rel="stylesheet" href="/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/chatstyle.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="/sheet.css">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100;200;300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,1,0" />
+</head>
+
+<body> 
+    {{#if isHomePage}}
+    <section class="section sec-1 show-animate">
+        <h1 class="animate">Welcome to the Cyglera Marketplace</h1>
+        <p class="animate">Discover a World of Health & Wellness</p>
+    </section>
+    
+    <section class="section sec-2-3">
+        <div class="text-content">
+        <h1 class="animate">What Do We Provide? </h1>
+        <p class="animate"></p>
+    </div>
+  
+<div class="images">
+    <img src="/img/fitness2.jpg" alt="" class="animate" style="--i:0; height: 200px; width: 300px; margin-left: 60px;">
+    <img src="/img/wellness.jpg" alt="" class="animate" style="--i:1;">
+    <img src="/img/mentalhealth.jpg" alt="" class="animate" style="--i:2;">
+    <img src="/img/nutrition.jpg" alt="" class="animate" style="--i:3;">
+    <span style="margin-right: 290px; margin-left: 150px; font-size: 30px; color:#0ef;">Fitness</span>   
+    <span style="margin-right: 220px; font-size: 30px; color:#0ef;">Wellness</span>
+    <span style="margin-right: 5px; font-size: 30px; color:#0ef;">Mental</span>
+    <span style="margin-right: 210px; font-size: 30px; color:#0ef;">Health</span>
+    <span style="font-size: 30px; color:#0ef;">Nutrition</span>
+</div>
+    </section>
+    
+    <section class="section sec-4">
+        <h1 class="animate">Are You Ready?<span class="showRight-animate" style="--i:1;"></span></h1>
+        <p class="animate">Let's Explore!<span class="showRight-animate" style="--i:4;"></span></p>
+    </section>
+
+{{/if}}
+
+<script>
+       
+        let sections = document.querySelectorAll(id='section:nth-of-type(1), section:nth-of-type(2), section:nth-of-type(3), section:nth-of-type(4)')
+
+        window.onscroll = () => {
+            sections.forEach(sec => {
+                let top = window.scrollY;
+                let offset = sec.offsetTop - 150;
+                let height = sec.offsetHeight;
+
+                if (top >= offset && top < offset + height) {
+                    sec.classList.add('show-animate');
+                }
+                else {
+                    sec.classList.remove('show-animate');
+                }
+            })
+        }
+    </script>
+
+
+        <section id="header">
+        <a href="index.html"><img src="img/cropped-CYGLERACORP-1.png" class="logo" alt="" width="160" height="50"></a>
+        <div>
+            <ul id="navbar">
+                <li><a class="{{#if (eq pageName 'home')}} active {{/if}}"  href="/">Home</a></li>
+                <li><a class="{{#if (eq pageName 'shop')}} active {{/if}}" href="/shop">Shop</a></li>
+                <li><a  class="{{#if (eq pageName 'blog')}} active {{/if}}" href="/blog">Blog</a></li>
+                <li><a class="{{#if (eq pageName 'about')}} active {{/if}}" href="/about">About</a></li>
+                <li><a class="{{#if (eq pageName 'contact')}} active {{/if}}" href="contact">Contact</a></li>
+                <li><a class="{{#if (eq pageName 'register ')}} active {{/if}}" href="register">Register</a></li>
+                <li><a href= "javascript:;" onclick="checkSession()">Admin Login</a></li>
+                <li id="lg-bag"><a href="/cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a></li>
+                <a href="#" id="close"><i class="fa fa-times"></i></a>
+            </ul>
+        </div>
+        <div id="mobile">
+            <a href="/cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+            <i id="bar" class="fa fa-bars"></i>
+        </div>
+    </section>
+
+
+   {{{body}}}
+
+
+   <footer class="section-p1">
+        <div class="col">
+            <img class="logo" src="img/logo.jpg" alt="">
+            <h4>Contact</h4>
+            <p><strong>Address:</strong> 4551 Zimmerman Ave, Niagara Falls, ON L2E 3M5</p>
+            <p><strong>Phone:</strong> 111-222-3333</p>
+            <p><strong>Email:</strong><a href="mailto:info@cyglera.com"> info@cyglera.com</a></p>
+        </div>
+
+        <div class="col">
+            <h4>About</h4>
+            <a href="/about">About us</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms & Conditions</a>
+            <a href="/contact">Contact Us</a>
+        </div>
+
+        <div class="col">
+            <h4>My Account</h4>
+            <a href="#">Sign In</a>
+            <a href="/cart">View Cart</a>
+            <a href="#">My Wishlist</a>
+            <a href="#">Track my order</a>
+            <a href="#">Help</a>
+        </div>
+
+        <div class="col_install">
+            <h4>Payment</h4>
+            <p>Secure Payment Gateways</p>
+            <div class="row">
+                <img src="img/paypal.png" alt="">
+                <img src="img/american-express.png" alt="">
+                <img src="img/visa.png" alt="">
+                <img src="img/stripe.png" alt="">
+                <img src="img/card.png" alt="">
+            </div>
+        </div>
+
+        <div class="copyright">
+            <p>ⓒ 2023, MarketPlace - Wellness MarketPlace</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('newsletter-form').addEventListener('submit', function(event) {
+                event.preventDefault();
+                var email = this.elements.email.value;
+                window.location.href = 'register.html?email=' + encodeURIComponent(email);
+            });
+        });
+    </script>
+
+<div id="id01" class="modal">
+
+    <form class="modal-content animate" id="adminlogin" method="post">
+        <div class="imgcontainer">
+            <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+            <img src="/img/avatar2.png" alt="Avatar" class="avatar">
+        </div>
+
+        <div class="container">
+            <label for="uname"><b>Username</b></label>
+            <input type="text" placeholder="Enter Username" name="uname" required>
+           
+
+            <label for="psw"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="psw" required>
+
+
+            {{!-- <label for="verification"><b>Verification Code</b></label>
+            <input type="text" placeholder="Enter verification code" name="verification" required /> --}}
+
+            <button type="submit" id="loginsubmit">Login</button>
+            {{!-- <label>
+                <input type="checkbox" checked="checked" name="remember"> Remember me
+            </label> --}}
+        </div>
+
+        {{!-- <div class="container" style="background-color:#f1f1f1">
+            <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+            <span class="psw">Forgot <a href="#">password?</a></span>
+        </div> --}}
+    </form>
+</div>
+<button class="chatbot-toggler">
+    <span class="material-symbols-rounded">mode_comment</span>
+    <span class="material-symbols-outlined">close</span>
+  </button>
+  <div class="chatbot">
+    <header>
+      <h2>Chatbot</h2>
+      <span class="close-btn material-symbols-outlined">close</span>
+    </header>
+    <ul class="chatbox">
+      <li class="chat incoming">
+        <span class="material-symbols-outlined">smart_toy</span>
+        <p>Hi there 👋<br>How can I help you today?</p>
+      </li>
+    </ul>
+    <div class="chat-input">
+      <textarea placeholder="Enter a message..." spellcheck="false" required></textarea>
+      <span id="send-btn" class="material-symbols-rounded">send</span>
+    </div>
+  </div>
+  <script
+  src="https://code.jquery.com/jquery-3.7.1.min.js"
+  integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+  crossorigin="anonymous"></script>
+<script src="/script.js"></script>
+<script src="/chatbot.js"></script>
+<script>
+    $(document).ready(function () {
+    $("#adminlogin").submit(function (e) {
+      e.preventDefault(); // Prevent the default form submission
+
+      // Get form data
+      var formData = {
+        email: $("input[name=uname]").val(),
+        password: $("input[name=psw]").val(),
+      };
+
+      // Send AJAX request
+      $.ajax({
+        type: "POST",
+        url: "/adminlogin",
+        data: formData,
+        
+        success: function (response) {
+            console.log(response)
+          // Check the response and redirect or show an alert
+          if (response.success) {
+            window.location.href = "/admin/seller";
+          } else {
+            alert("Login failed. Please check your credentials.");
+          }
+        },
+        error: function (error) {
+          console.error("AJAX Error:", error);
+          alert("An error occurred during login.");
+        },
+      });
+    });
+  });
+
+  function checkSession()
+  {
+     $.ajax({
+        type: "POST",
+        url: "/check-session",
+        data: {},
+        
+        success: function (response) {
+            
+          // Check the response and redirect or show an alert
+          if (response.success) {
+            window.location.href = "/admin/seller";
+          } else {
+           document.getElementById('id01').style.display='block'
+          }
+        },
+        
+      });
+  }
+</script>
+</body>
+</html>
+

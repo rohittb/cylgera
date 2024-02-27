@@ -1,0 +1,148 @@
+<div id="main-content">
+    <button id="add-seller-btn" onclick="openModal()">Add Buyers</button>
+
+    <table id="table_body">
+        <tr>
+           <th>Name</th>
+            <th>Email</th>
+            <th>Remove</th>
+            <!-- Add more headers if needed -->
+        </tr>
+        
+        <!-- Add more rows if needed -->
+    </table>
+</div>
+
+</body>
+</html>
+<div id="myModal">
+  <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h2>Add Seller</h2>
+      <form id="buyerForm" onsubmit="addSeller(event)">
+          <label for="buyerName">Name:</label>
+          <input type="text" id="sellerName" name="buyerName" required>
+
+          <label for="buyerEmail">Email:</label>
+          <input type="email" id="sellerEmail" name="buyerEmail" required>
+
+          <button type="submit">Add Buyer</button>
+      </form>
+  </div>
+</div>
+<script
+  src="https://code.jquery.com/jquery-3.7.1.min.js"
+  integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+  crossorigin="anonymous"></script>
+<script>
+  
+    function openModal() {
+        document.getElementById('myModal').style.display = 'block';
+    }
+
+    function closeModal() {
+        document.getElementById('myModal').style.display = 'none';
+    }
+   let count=1;
+    function addSeller(event) {
+        event.preventDefault();
+
+        // Get form values
+        var name = document.getElementById('sellerName').value;
+        var email = document.getElementById('sellerEmail').value;
+         $.ajax({
+        type: "POST",
+        url: "/addbuyer",
+        data: {name:name,email:email},
+        
+        success: function (response) {
+            
+          // Check the response and redirect or show an alert
+          if (response.success) {
+           getAllBuyers();
+           document.getElementById('sellerName').value=''
+        document.getElementById('sellerEmail').value='';
+        // Close the modal after adding the buyer
+        closeModal();
+          } else {
+           alert(response.message)
+          }
+        },
+        
+      });
+        
+    }
+    $(document).ready(function() {
+  // Attach click event to the parent table
+  
+
+  // Example of dynamically adding a new row
+  
+});
+
+function getAllBuyers()
+{
+    $.ajax({
+        type: "POST",
+        url: "/getallbuyers",
+        data: {},
+        
+        success: function (response) {
+            
+          // Check the response and redirect or show an alert
+          if (response.success) {
+           var html=`<tr>
+           <th>Name</th>
+            <th>Email</th>
+            <th>Remove</th>
+            
+        </tr>`;
+           response.data.forEach( (data) => {
+              html+=`<tr>
+            <td>${data.name}</td>
+            <td>${data.email}</td>
+            
+            <td><a href="javascript:;" onclick=removeBuyer(${data.id}) class="remove" style="width:100px;color:black">&times</a></td>
+            </tr>`
+           })
+              
+        
+        // Append the new row to the Buyers column
+        $('#table_body').html(html);
+          } else {
+           
+          }
+        },
+        
+      });
+}
+
+
+function removeBuyer(id)
+{
+    $.ajax({
+        type: "POST",
+        url: "/removebuyer",
+        data: {id:id},
+        
+        success: function (response) {
+            
+          // Check the response and redirect or show an alert
+          if (response.success) {
+           getAllBuyers();
+         
+          } else {
+           alert(response.message)
+          }
+        },
+        
+      });
+}
+
+
+
+
+$(document).ready(function(){
+getAllBuyers()
+})
+</script>
