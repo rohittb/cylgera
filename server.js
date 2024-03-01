@@ -53,6 +53,7 @@ app.post('/check-session', (req, res) => {
 
 const checkSession = (req, res, next) => {
     if (req.session && req.session.loggedIn) {
+      
         // If admin session exists, proceed to the next middleware
         next();
     } else {
@@ -118,6 +119,10 @@ app.get('/register', (req, res) => {
 
 app.get('/cart', (req, res) => {
     res.render('cart',{pageName: 'cart'});
+});
+
+app.get('/appointment', (req, res) => {
+    res.render('appointment',{pageName: 'appointment'});
 });
 
 app.get('/admin/seller',checkSession, (req, res) => {
@@ -269,6 +274,35 @@ app.post('/adminlogin', async(req, res) => {
         })
     };
     })
+  });
+
+
+  app.post('/addappointment',(req,res)=>{
+    connection.query(`insert into appointment (email,name,phone,appointment,appointmentdate,appointmenttime,comment) values('${req.body.email}','${req.body.name}','${req.body.phone}','${req.body.appointment}','${req.body.date}','${req.body.time}','${req.body.comments}')`, async (error,results)=>{
+        if (error) {
+            console.error('Error during login:', error.message);
+            return res.status(200).json({ success: false, message: 'Internal server error.' });
+          }
+          return res.status(200).json({ success: true});
+        })
+   
+  });
+
+  app.get('/admin/appointments',checkSession,(req,res)=>{
+    connection.query(`select * from appointment`, async (error,results)=>{
+        if (error) {
+            console.error('Error during login:', error.message);
+            res.render('appointments', { adminPageTitle: 'Admin Page', layout: 'admin',data:[] });
+          }
+          else
+          {
+            
+          res.render('appointments', { adminPageTitle: 'Admin Page', layout: 'admin',data:results });
+          }
+          
+        })
+        // res.render('appointments', { adminPageTitle: 'Admin Page', layout: 'admin',data:[] });
+   
   });
 
 

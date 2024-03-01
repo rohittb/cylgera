@@ -16,6 +16,7 @@
 <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100;200;300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,1,0" />
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css"/>
 </head>
 
 <body> 
@@ -80,8 +81,9 @@
                 <li><a class="{{#if (eq pageName 'shop')}} active {{/if}}" href="/shop">Shop</a></li>
                 <li><a  class="{{#if (eq pageName 'blog')}} active {{/if}}" href="/blog">Blog</a></li>
                 <li><a class="{{#if (eq pageName 'about')}} active {{/if}}" href="/about">About</a></li>
-                <li><a class="{{#if (eq pageName 'contact')}} active {{/if}}" href="contact">Contact</a></li>
-                <li><a class="{{#if (eq pageName 'register ')}} active {{/if}}" href="register">Register</a></li>
+                <li><a class="{{#if (eq pageName 'contact')}} active {{/if}}" href="/contact">Contact</a></li>
+                <li><a class="{{#if (eq pageName 'appointment ')}} active {{/if}}" href="/appointment">Book Appointment</a></li>
+                <li><a class="{{#if (eq pageName 'register ')}} active {{/if}}" href="/register">Register</a></li>
                 <li><a href= "javascript:;" onclick="checkSession()">Admin Login</a></li>
                 <li id="lg-bag"><a href="/cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a></li>
                 <a href="#" id="close"><i class="fa fa-times"></i></a>
@@ -207,6 +209,7 @@
   src="https://code.jquery.com/jquery-3.7.1.min.js"
   integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
   crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 <script src="/script.js"></script>
 <script src="/chatbot.js"></script>
 <script>

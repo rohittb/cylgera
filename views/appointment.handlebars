@@ -1,0 +1,120 @@
+<style>
+		body {
+			font-family: Arial, sans-serif;
+		}
+		form {
+			width: 500px;
+			margin: 0 auto;
+			padding: 20px;
+			border: 1px solid #ddd;
+			box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+		}
+		label {
+			display: block;
+			margin-top: 10px;
+		}
+		input[type="text"], input[type="email"], input[type="tel"], textarea {
+			width: 100%;
+			padding: 5px;
+			margin-top: 5px;
+			border: 1px solid #ddd;
+			border-radius: 5px;
+			box-sizing: border-box;
+		}
+		select {
+			width: 100%;
+			padding: 5px;
+			margin-top: 5px;
+			border: 1px solid #ddd;
+			border-radius: 5px;
+			box-sizing: border-box;
+		}
+		input[type="submit"] {
+			width: 100%;
+			padding: 10px;
+			margin-top: 20px;
+			background-color: #4CAF50;
+			color: white;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+		}
+		input[type="submit"]:hover {
+			background-color: #45a049;
+		}
+	</style>
+<section id="page-header" class="about-header">
+    <h2>Book Appointment</h2>
+    <p>Book an Appointment with us</p>
+</section>
+<section id="cart" class="section-p1">
+
+    <form onsubmit="submitForm(event)" id="appointment_form" method="post">
+		<label for="name">Name:</label>
+		<input type="text" id="name" name="name" required>
+		<label for="email">Email:</label>
+		<input type="email" id="email" name="email" required>
+		<label for="phone">Phone:</label>
+		<input type="tel" id="phone" name="phone" required>
+		<label for="appointment">Appointment:</label>
+		<select id="appointment" name="appointment" required>
+                        <option value="select">Select from list</option>
+			<option value="consultation">Consultation(In-person)</option>
+			<option value="phone_call">Phone Call</option>
+                        <option value="video call">Video Call(Yoga Sessions only)</option>
+		</select>
+		<label for="date">Choose date:</label>
+		<input type="date" id="date" name="date" required>
+		<label for="comments">Comments:</label>
+		<textarea id="comments" name="comments"></textarea>
+		<label for="time">Choose time:</label>
+		<select id="time" name="time" required>
+                        <option value="10am">10:00 am</option>
+                        <option value="11am">11:00 am</option>
+                        <option value="12pm">12:00 pm</option>
+                        <option value="1pm">1:00 pm</option>
+			<option value="2pm">2:00 pm</option>
+			<option value="3pm">3:00 pm</option>
+			<option value="4pm">4:00 pm</option>
+		</select>
+		<input type="submit" value="Submit">
+	</form>
+</section>
+
+<script>
+	 function showSuccessToastr(msg) {
+        // Display a success toastr
+        toastr.success(msg, 'Success');
+    }
+
+	function showErrorToastr(msg) {
+        // Display a success toastr
+        toastr.error(msg, 'Error');
+    }
+	function submitForm(e) {
+		e.preventDefault();
+        // Get form data
+        var formData = $('#appointment_form').serialize();
+
+        // AJAX request
+        $.ajax({
+            type: 'POST',
+            url: '/addappointment', // Replace with your server endpoint
+            data: formData,
+            success: function(response) {
+                // Handle the response from the server
+                if (response.success) {
+				 showSuccessToastr('appointment booked successfully')length;
+				  var form = document.getElementById('appointment_form');
+
+        // Reset the form
+        form.reset();
+				}
+            },
+            error: function(error) {
+                // Handle errors
+                showErrorToastr('something went wrong')
+            }
+        });
+    }
+</script>
